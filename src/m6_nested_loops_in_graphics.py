@@ -11,7 +11,7 @@ import rosegraphics as rg
 
 def main():
     """ Calls the other functions to demonstrate them. """
-    run_test_draw_L()
+    #run_test_draw_L()
     run_test_draw_wall_on_right()
 
 
@@ -141,8 +141,20 @@ def draw_wall_on_right(rectangle, n, window):
       :type window: rg.RoseWindow
     and n is a small, positive integer.
     """
+    for k in range(n):
+        for l in range(k+1):
+            rect=rectangle.clone()
+            rect.corner_1.y=rectangle.corner_1.y+k*rectangle.get_height()
+            rect.corner_2.y = rectangle.corner_2.y + k * rectangle.get_height()
+            rect.corner_1.x=rectangle.corner_1.x-l*rectangle.get_width()
+            rect.corner_2.x = rectangle.corner_2.x - l * rectangle.get_width()
+            rect.attach_to(window)
+            window.render(0.1)
+
+
+
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # TO: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
 
